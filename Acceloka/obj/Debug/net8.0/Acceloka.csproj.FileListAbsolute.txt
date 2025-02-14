@@ -81,3 +81,4 @@ C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka\bin\Debug\net8.0\Serilog.Sin
 C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
 C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka\bin\Debug\net8.0\Serilog.Sinks.File.dll
 C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka\bin\Debug\net8.0\System.Text.Json.dll
+C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka\obj\Debug\net8.0\Acceloka.sourcelink.json

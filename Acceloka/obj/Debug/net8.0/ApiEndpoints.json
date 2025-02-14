@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "Acceloka.Controllers.AdminController",
+    "Method": "AddTicket",
+    "RelativePath": "api/v1/admin/add-tickets",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Acceloka.Models.AddTicketRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Acceloka.Controllers.BookingController",
     "Method": "BookTickets",
     "RelativePath": "api/v1/book-ticket",

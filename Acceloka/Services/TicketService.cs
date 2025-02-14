@@ -1,5 +1,6 @@
 ﻿using Acceloka.Entities;
 using Acceloka.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 
@@ -107,6 +108,113 @@ namespace Acceloka.Services
                 tickets,
                 totalTickets
             };
+        }
+
+        public async Task<object> AddTicketAsync(AddTicketRequest request)
+        {
+            try
+            {
+                _logger.LogInformation("Admin is adding a new ticket: {TicketName}", request.TicketName);
+
+                var category = await _db.Categories.FindAsync(request.CategoryId);
+                if (category == null)
+                {
+                    _logger.LogWarning("CategoryId '{CategoryId}' not found.", request.CategoryId);
+                    return new ProblemDetails
+                    {
+                        Status = 400,
+                        Title = "Bad Request",
+                        Detail = $"CategoryId '{request.CategoryId}' not found.",
+                        Instance = "/api/v1/admin/tickets"
+                    };
+                }
+
+                bool ticketExists = await _db.Tickets.AnyAsync(t => t.TicketCode == request.TicketCode);
+                if (ticketExists)
+                {
+                    _logger.LogWarning("TicketCode '{TicketCode}' already exists.", request.TicketCode);
+                    return new ProblemDetails
+                    {
+                        Status = 400,
+                        Title = "Bad Request",
+                        Detail = $"TicketCode '{request.TicketCode}' already exists.",
+                        Instance = "/api/v1/admin/tickets"
+                    };
+                }
+
+                if (!DateTime.TryParseExact(request.EventDate, "dd-MM-yyyy HH:mm",
+                                            CultureInfo.InvariantCulture,
+                                            DateTimeStyles.None, out DateTime parsedEventDate))
+                {
+                    return new ProblemDetails
+                    {
+                        Status = 400,
+                        Title = "Bad Request",
+                        Detail = "Invalid date format. Use 'dd-MM-yyyy HH:mm' (e.g., 01-02-2026 13:00).",
+                        Instance = "/api/v1/admin/tickets"
+                    };
+                }
+
+                if (request.Price <= 0)
+                {
+                    return new ProblemDetails
+                    {
+                        Status = 400,
+                        Title = "Bad Request",
+                        Detail = "Price must be greater than 0.",
+                        Instance = "/api/v1/admin/tickets"
+                    };
+                }
+
+                if (request.Quota <= 0)
+                {
+                    return new ProblemDetails
+                    {
+                        Status = 400,
+                        Title = "Bad Request",
+                        Detail = "Quota must be greater than 0.",
+                        Instance = "/api/v1/admin/tickets"
+                    };
+                }
+
+                var ticket = new Ticket
+                {
+                    CategoryId = request.CategoryId,
+                    TicketCode = request.TicketCode,
+                    TicketName = request.TicketName,
+                    EventDate = parsedEventDate,
+                    Price = request.Price,
+                    Quota = request.Quota
+                };
+
+                await _db.Tickets.AddAsync(ticket);
+                await _db.SaveChangesAsync();
+
+                _logger.LogInformation("Successfully added ticket: {TicketName}", request.TicketName);
+                return new
+                {
+                    message = "Ticket added successfully",
+                    ticketId = ticket.TicketId,
+                    categoryId = ticket.CategoryId,
+                    ticketCode = ticket.TicketCode,
+                    ticketName = ticket.TicketName,
+                    EventDate = parsedEventDate,
+                    price = ticket.Price,
+                    quota = ticket.Quota
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An unexpected error occurred while adding a ticket.");
+
+                return new ProblemDetails
+                {
+                    Status = 500,
+                    Title = "Internal Server Error",
+                    Detail = "An unexpected error occurred. Please try again later.",
+                    Instance = "/api/v1/admin/tickets"
+                };
+            }
         }
     }
 }
