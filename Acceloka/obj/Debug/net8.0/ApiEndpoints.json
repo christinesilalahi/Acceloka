@@ -16,6 +16,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Acceloka.Controllers.AdminController",
+    "Method": "DeleteTicket",
+    "RelativePath": "api/v1/admin/delete-tickets/{ticketId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ticketId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Acceloka.Controllers.BookingController",
     "Method": "BookTickets",
     "RelativePath": "api/v1/book-ticket",

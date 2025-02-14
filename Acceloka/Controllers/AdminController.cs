@@ -27,6 +27,20 @@ namespace Acceloka.Controllers
                
             return Ok(result);
         }
+
+        [HttpDelete("delete-tickets/{ticketId}")]
+        public async Task<IActionResult> DeleteTicket(int ticketId)
+        {
+            var result = await _ticketService.DeleteTicketAsync(ticketId);
+
+            if (result is ProblemDetails problem)
+            {
+                return BadRequest(problem);
+            }
+
+            return Ok(result);
+        }
+
     }
 
 }

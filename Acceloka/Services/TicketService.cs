@@ -216,5 +216,49 @@ namespace Acceloka.Services
                 };
             }
         }
+
+        public async Task<object> DeleteTicketAsync(int ticketId)
+        {
+            try
+            {
+                _logger.LogInformation("Admin is attempting to delete ticket with ID: {TicketId}", ticketId);
+
+                var ticket = await _db.Tickets.FindAsync(ticketId);
+                if (ticket == null)
+                {
+                    _logger.LogWarning("TicketId '{TicketId}' not found.", ticketId);
+                    return new ProblemDetails
+                    {
+                        Status = 404,
+                        Title = "Not Found",
+                        Detail = $"TicketId '{ticketId}' not found.",
+                        Instance = $"/api/v1/admin/tickets/{ticketId}"
+                    };
+                }
+
+                _db.Tickets.Remove(ticket);
+                await _db.SaveChangesAsync();
+
+                _logger.LogInformation("Successfully deleted ticket with ID: {TicketId}", ticketId);
+                return new
+                {
+                    message = "Ticket deleted successfully",
+                    ticketId = ticketId
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An unexpected error occurred while deleting the ticket.");
+
+                return new ProblemDetails
+                {
+                    Status = 500,
+                    Title = "Internal Server Error",
+                    Detail = "An unexpected error occurred. Please try again later.",
+                    Instance = $"/api/v1/admin/tickets/{ticketId}"
+                };
+            }
+        }
+
     }
 }
