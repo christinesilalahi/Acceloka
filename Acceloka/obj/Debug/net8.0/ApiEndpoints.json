@@ -17,6 +17,16 @@
   },
   {
     "ContainingType": "Acceloka.Controllers.AdminController",
+    "Method": "GetBookingReportData",
+    "RelativePath": "api/v1/admin/data-report",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Acceloka.Controllers.AdminController",
     "Method": "DeleteTicket",
     "RelativePath": "api/v1/admin/delete-tickets/{ticketId}",
     "HttpMethod": "DELETE",
@@ -29,6 +39,26 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Acceloka.Controllers.AdminController",
+    "Method": "DownloadExcelReport",
+    "RelativePath": "api/v1/admin/excel-report",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Acceloka.Controllers.AdminController",
+    "Method": "DownloadPdfReport",
+    "RelativePath": "api/v1/admin/pdf-report",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

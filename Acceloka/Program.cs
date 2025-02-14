@@ -1,10 +1,14 @@
 using Acceloka.Entities;
 using Acceloka.Services;
 using Microsoft.EntityFrameworkCore;
+using QuestPDF.Infrastructure;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
+
+var licenseType = configuration["QuestPDF:LicenseType"];
+QuestPDF.Settings.License = licenseType == "Community" ? LicenseType.Community : LicenseType.Enterprise;
 
 // Add services to the container.
 
@@ -34,6 +38,7 @@ builder.Services.AddDbContextPool<AccelokaContext>(options =>
 
 builder.Services.AddTransient<TicketService>();
 builder.Services.AddTransient<BookingService>();
+builder.Services.AddTransient<BookingReportService>();
 
 var app = builder.Build();
 

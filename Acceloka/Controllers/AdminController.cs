@@ -10,10 +10,12 @@ namespace Acceloka.Controllers
     public class AdminController : ControllerBase
     {
         private readonly TicketService _ticketService;
+        private readonly BookingReportService _bookingReportService;
 
-        public AdminController(TicketService ticketService)
+        public AdminController(TicketService ticketService, BookingReportService bookingReportService)
         {
             _ticketService = ticketService;
+            _bookingReportService = bookingReportService;
         }
 
         [HttpPost("add-tickets")]
@@ -39,6 +41,27 @@ namespace Acceloka.Controllers
             }
 
             return Ok(result);
+        }
+
+        [HttpGet("data-report")]
+        public async Task<IActionResult> GetBookingReportData()
+        {
+            var data = await _bookingReportService.GetBookingReportDataAsync();
+            return Ok(new { message = "Booking data retrieved successfully.", data });
+        }
+
+        [HttpGet("pdf-report")]
+        public async Task<IActionResult> DownloadPdfReport()
+        {
+            var pdfBytes = await _bookingReportService.GeneratePdfReportAsync();
+            return File(pdfBytes, "application/pdf", "BookingReportAcceloka.pdf");
+        }
+
+        [HttpGet("excel-report")]
+        public async Task<IActionResult> DownloadExcelReport()
+        {
+            var excelBytes = await _bookingReportService.GenerateExcelReportAsync();
+            return File(excelBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "BookingReportAcceloka.xlsx");
         }
 
     }
