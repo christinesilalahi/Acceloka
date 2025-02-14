@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acceloka", "Acceloka\Acceloka.csproj", "{18DFBE6D-47FB-4163-836A-71F7B4659956}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acceloka.Entities", "Acceloka.Entities\Acceloka.Entities.csproj", "{E5032F09-5642-42A7-A86F-1C46B45F0ACF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18DFBE6D-47FB-4163-836A-71F7B4659956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18DFBE6D-47FB-4163-836A-71F7B4659956}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18DFBE6D-47FB-4163-836A-71F7B4659956}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18DFBE6D-47FB-4163-836A-71F7B4659956}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5032F09-5642-42A7-A86F-1C46B45F0ACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5032F09-5642-42A7-A86F-1C46B45F0ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5032F09-5642-42A7-A86F-1C46B45F0ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5032F09-5642-42A7-A86F-1C46B45F0ACF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {70A6FC4D-E71D-4239-B48A-29F6609B24C2}
+	EndGlobalSection
+EndGlobal

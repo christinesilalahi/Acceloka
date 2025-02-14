@@ -1,0 +1,34 @@
+﻿CREATE DATABASE Acceloka
+
+USE Acceloka
+
+CREATE TABLE Category(
+	CategoryId INT NOT NULL CONSTRAINT PK_Category PRIMARY KEY IDENTITY,
+	CategoryName VARCHAR(100) NOT NULL
+)
+
+CREATE TABLE Tickets (
+	TicketId INT NOT NULL CONSTRAINT PK_Tickets PRIMARY KEY IDENTITY,
+	CategoryId INT NOT NULL,
+	TicketCode VARCHAR(50) NOT NULL,
+	TicketName VARCHAR(200) NOT NULL,
+	EventDate DATETIME NOT NULL,
+	Price DECIMAL(10,2) NOT NULL,
+	Quota INT NOT NULL,
+
+	CONSTRAINT FK_Tickets_Category FOREIGN KEY (CategoryId) REFERENCES Category(CategoryId),
+);
+
+CREATE TABLE Bookings(
+	BookingId INT NOT NULL CONSTRAINT PK_Bookings PRIMARY KEY IDENTITY,
+	BookingDate DATETIME NOT NULL DEFAULT GETDATE()
+);
+
+CREATE TABLE BookingDetails(
+	BookingDetailsId INT NOT NULL CONSTRAINT PK_BookingDetails PRIMARY KEY IDENTITY,
+	BookingId INT NOT NULL,
+	TicketId INT NOT NULL,
+	Quantity INT NOT NULL,
+	CONSTRAINT FK_BookingDetails_Bookings FOREIGN KEY (BookingId) REFERENCES Bookings(BookingId),
+	CONSTRAINT FK_BookingDetails_Tickets FOREIGN KEY(TicketId) REFERENCES Tickets(TicketId)
+);

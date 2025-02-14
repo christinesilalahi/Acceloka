@@ -1,0 +1,14 @@
+C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka.Entities\bin\Debug\net8.0\Acceloka.Entities.deps.json
+C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka.Entities\bin\Debug\net8.0\Acceloka.Entities.dll
+C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka.Entities\bin\Debug\net8.0\Acceloka.Entities.pdb
+C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka.Entities\obj\Debug\net8.0\Acceloka.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka.Entities\obj\Debug\net8.0\Acceloka.Entities.AssemblyInfoInputs.cache
+C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka.Entities\obj\Debug\net8.0\Acceloka.Entities.AssemblyInfo.cs
+C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka.Entities\obj\Debug\net8.0\Acceloka.Entities.csproj.CoreCompileInputs.cache
+C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka.Entities\obj\Debug\net8.0\Acceloka.Entities.dll
+C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka.Entities\obj\Debug\net8.0\refint\Acceloka.Entities.dll
+C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka.Entities\obj\Debug\net8.0\Acceloka.Entities.pdb
+C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka.Entities\obj\Debug\net8.0\ref\Acceloka.Entities.dll
+C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka.Entities\bin\Debug\net8.0\Acceloka.Entities.runtimeconfig.json
+C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka.Entities\obj\Debug\net8.0\Acceloka.Entities.csproj.AssemblyReference.cache
+C:\Users\andry\Downloads\Accelist\Acceloka\Acceloka.Entities\obj\Debug\net8.0\Acceloka.Entities.genruntimeconfig.cache
